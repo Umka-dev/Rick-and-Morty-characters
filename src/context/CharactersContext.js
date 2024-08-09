@@ -65,8 +65,14 @@ export const CharactersContextProvider = ({ children }) => {
 
   // ---Handlers for Search Bar
   const handleSearchNavigate = (value) => {
+    let url = '/search/';
+
+    if (value) {
+      url = `${url}?${FILTER_NAMES.name}=${value.toLowerCase()}`;
+    }
+
+    navigate(url);
     setSelectedSpecies([]);
-    navigate(`/search/?${FILTER_NAMES.name}=${value.toLowerCase()}`);
   };
 
   // Handlers for Filter Panel---

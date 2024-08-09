@@ -14,9 +14,7 @@ const SearchBar = () => {
   const { palette } = useTheme();
 
   const onSubmit = (data) => {
-    if (data[FILTER_NAMES.name]) {
-      handleSearchNavigate(data[FILTER_NAMES.name].toLowerCase());
-    }
+    handleSearchNavigate(data[FILTER_NAMES.name]);
   };
 
   return (
@@ -30,7 +28,7 @@ const SearchBar = () => {
               label='Input name'
               variant='standard'
               size='small'
-              value={value}
+              value={value || ''}
               onChange={onChange}
               InputProps={{
                 sx: {

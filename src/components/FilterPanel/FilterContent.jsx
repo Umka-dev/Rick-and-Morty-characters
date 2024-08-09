@@ -26,11 +26,7 @@ const FilterContent = () => {
   };
 
   const handleReset = () => {
-    reset({
-      [FILTER_NAMES.name]: '',
-      [FILTER_NAMES.gender]: '',
-      [FILTER_NAMES.status]: '',
-    });
+    reset();
     handleResetFilters();
   };
 
