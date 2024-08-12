@@ -45,7 +45,6 @@ const SpeciesChips = () => {
             variant={isSelected(speciesName, idx) ? 'filled' : 'outlined'}
             color={isSelected(speciesName, idx) ? 'primary' : 'default'}
             sx={{ color: palette.common.white }}
-            clickable='true'
             onClick={() => handleChipClick(speciesName)}
           />
         ))}

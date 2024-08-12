@@ -9,7 +9,7 @@ const HomePage = () => {
       textAlign='center'
       sx={{
         mt: {
-          xs: '160px',
+          xs: '130px',
           sm: '110px',
         },
       }}

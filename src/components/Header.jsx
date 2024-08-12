@@ -23,6 +23,7 @@ const Header = () => {
     <AppBar
       component='header'
       position='fixed'
+      width='100%'
       sx={{
         boxShadow: 'none',
         alignItems: 'center',
@@ -51,18 +52,12 @@ const Header = () => {
               '&:active': {
                 color: palette.common.white,
               },
+              marginBottom: { xs: '10px', sm: '0' },
             }}
           >
             Home
           </Typography>
-          {!isSearchResultsPage && (
-            <Stack
-              direction={{ xs: 'column', sm: 'row' }}
-              spacing={{ xs: 1, sm: 2 }}
-            >
-              <SearchBar />
-            </Stack>
-          )}
+          {!isSearchResultsPage && <SearchBar />}
         </Stack>
       </Toolbar>
     </AppBar>

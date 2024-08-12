@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { ALL_SPECIES_NAME, FILTER_NAMES } from '../constants';
 import { useCharactersApi } from '../hooks/useCharactersApi';
+import { removeEmptyKeys } from '../utils';
 
 // Create CONTEXT
 const CharactersContext = createContext();
@@ -20,11 +21,6 @@ export const CharactersContextProvider = ({ children }) => {
 
   // ---States for Filter Panel
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filters, setFilters] = useState({
-    name: searchParams.get(FILTER_NAMES.name) || '',
-    status: searchParams.get(FILTER_NAMES.status) || '',
-    gender: searchParams.get(FILTER_NAMES.gender) || '',
-  });
   // States for Filter Panel---
 
   // Get species list, handler for Species Chips---
@@ -68,45 +64,25 @@ export const CharactersContextProvider = ({ children }) => {
   // Get species list, filter characters and handlers for Species Chips---
 
   // ---Handlers for Search Bar
-  const handleSearchNavigate = () => {
-    navigate(`/search/?name=${filters.name.toLowerCase()}`);
+  const handleSearchNavigate = (value) => {
+    let url = '/search/';
+
+    if (value) {
+      url = `${url}?${FILTER_NAMES.name}=${value.toLowerCase()}`;
+    }
+
+    navigate(url);
     setSelectedSpecies([]);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      handleSearchNavigate();
-    }
+  // Handlers for Filter Panel---
+  const handleApplyFilters = (filtersData) => {
+    setSearchParams(new URLSearchParams(removeEmptyKeys(filtersData)));
   };
-  // Handlers for Search Bar---
-
-  // ---Handlers for Filter Panel
-  const handleFilterChange = (key, value) => {
-    setFilters((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
-  };
-
-  const handleNameChange = (e) => {
-    handleFilterChange(FILTER_NAMES.name, e.target.value);
-  };
-
-  const handleApplyFilters = React.useCallback(() => {
-    const newParams = new URLSearchParams(filters);
-    setSearchParams(newParams);
-  }, [filters]);
 
   const handleResetFilters = () => {
-    setFilters({
-      name: '',
-      status: '',
-      gender: '',
-    });
-    setSearchParams(new URLSearchParams());
+    setSearchParams();
   };
-  // Handlers for Filter Panel---
 
   return (
     <CharactersContext.Provider
@@ -122,13 +98,9 @@ export const CharactersContextProvider = ({ children }) => {
         handleChipClick,
         filteredCharacters,
         searchParams,
-        filters,
-        handleFilterChange,
         handleApplyFilters,
         handleResetFilters,
-        handleNameChange,
         handleSearchNavigate,
-        handleKeyDown,
       }}
     >
       {children}
