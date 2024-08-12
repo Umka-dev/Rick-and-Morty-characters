@@ -20,7 +20,7 @@ const SpeciesChips = () => {
   return (
     <Box
       display='flex'
-      width='100%'
+      width='90%'
       justifyContent='center'
       p={2}
       sx={{
