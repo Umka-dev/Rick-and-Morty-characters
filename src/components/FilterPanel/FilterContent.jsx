@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { Stack, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { GenderRadioButtons, StatusRadioButtons, FilterNameField } from './';
-import { FILTER_NAMES } from '../../constants';
 
 import { useCharactersContext } from '../../context/CharactersContext';
+import { FILTER_NAMES } from '../../constants';
 
 const FilterContent = () => {
   const { handleResetFilters, handleApplyFilters, searchParams } =

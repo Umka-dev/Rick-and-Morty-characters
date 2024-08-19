@@ -10,15 +10,12 @@ import { ALL_SPECIES_NAME, CHARACTER_API_URL } from '../constants';
  */
 
 const useCharactersApi = (searchParams) => {
-  // ---States for Card Container
   const [characters, setCharacters] = useState([]);
   const [totalCount, setTotalCount] = useState(null);
   const [hasNextPage, setHasNextPage] = useState('');
-  // States for Card Container---
 
   const [speciesList, setSpeciesList] = useState([]);
 
-  // ---Data fetching for Card Container
   const getKey = React.useCallback(
     (_, prevCharacters) => {
       if (prevCharacters) {
@@ -57,7 +54,7 @@ const useCharactersApi = (searchParams) => {
     setHasNextPage(nextPage);
   }, [data]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const allSpecies = [
       ALL_SPECIES_NAME,
       ...new Set(characters.map(({ species }) => species)),
