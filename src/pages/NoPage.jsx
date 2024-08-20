@@ -14,8 +14,7 @@ const NoPage = () => {
       textAlign='center'
       sx={{
         my: {
-          xs: '120px',
-          sm: '140px',
+          xs: '140px',
           md: '160px',
           lg: '180px',
           xl: '200px',
@@ -28,7 +27,13 @@ const NoPage = () => {
           position: 'relative',
           color: palette.common.white,
           fontWeight: 900,
-          fontSize: { xs: '8em', sm: '12em', md: '16em', lg: '20em' },
+          fontSize: {
+            xs: '12em',
+            sm: '14em',
+            md: '16em',
+            lg: '18em',
+            xl: '20em',
+          },
           display: 'block',
           overflow: 'hidden',
           width: 'fit-content',
