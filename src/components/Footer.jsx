@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Link, IconButton } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { useTheme } from '@mui/material/styles';
 
 const Footer = () => {
@@ -13,8 +14,17 @@ const Footer = () => {
       color={palette.grey[400]}
     >
       <Typography variant='body2'>
-        © {new Date().getFullYear()} Rick and Morty Characters | made by
-        Umka-dev with💙
+        <Link
+          href='https://github.com/Umka-dev/Rick-and-Morty-characters'
+          target='_blank'
+          sx={{ ml: 1 }}
+        >
+          <IconButton aria-label='GitHub'>
+            <GitHubIcon sx={{ fontSize: 20, color: palette.grey[400] }} />
+          </IconButton>
+        </Link>
+        © {new Date().getFullYear()} Rick and Morty Characters React App | made
+        by Umka-dev with💙
       </Typography>
     </Box>
   );
