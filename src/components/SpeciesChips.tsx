@@ -4,13 +4,13 @@ import { useTheme } from '@mui/material/styles';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const SpeciesChips = () => {
+const SpeciesChips: React.FC = () => {
   const { speciesList, selectedSpecies, handleChipClick } =
     useCharactersContext();
 
   const { palette } = useTheme();
 
-  const isSelected = (speciesName, idx) => {
+  const isSelected = (speciesName: string, idx: number) => {
     if (idx === 0 && !selectedSpecies.length) {
       return true;
     }

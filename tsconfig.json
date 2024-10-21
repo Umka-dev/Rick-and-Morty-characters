@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5", // Ensures compatibility with older browsers.
+    "target": "es2015", //Uses iteration over Set objects.
     "lib": ["dom", "dom.iterable", "esnext"], // Includes DOM and ES features.
     "allowJs": true, // Allows mixing JavaScript files in the project.
     "skipLibCheck": true, // Skips type checking of declaration files.

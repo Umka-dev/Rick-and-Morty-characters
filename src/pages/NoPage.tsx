@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-const NoPage = () => {
+const NoPage: React.FC = () => {
   const { palette } = useTheme();
   return (
     <Box

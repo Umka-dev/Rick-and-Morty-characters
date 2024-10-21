@@ -6,14 +6,9 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
+import { ICharacter } from '../types/types';
 
-interface CardProps {
-  id: string;
-  name: string;
-  image: string;
-}
-
-const Card: React.FC<CardProps> = ({ id, name, image }) => {
+const Card: React.FC<ICharacter> = ({ id, name, image }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {

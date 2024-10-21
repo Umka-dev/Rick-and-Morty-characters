@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography } from '@mui/material';
+import { Typography, TypographyProps } from '@mui/material';
 
-const CustomTypography = (props) => {
+const CustomTypography: React.FC<TypographyProps> = (props) => {
   return (
     <Typography
       variant='h1'

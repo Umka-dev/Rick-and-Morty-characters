@@ -9,7 +9,7 @@ import CustomTypography from '../components/CustomTypography';
 import { fetcher } from '../utils';
 import { CHARACTER_API_URL } from '../constants';
 
-const CharacterDetails = () => {
+const CharacterDetails: React.FC = () => {
   const { id } = useParams();
   const { data: character, error } = useSWR(
     `${CHARACTER_API_URL}${id}`,
@@ -17,7 +17,7 @@ const CharacterDetails = () => {
   );
   const { palette } = useTheme();
 
-  if (error) return <ErrorDisplay message={error.message} />;
+  if (error) return <ErrorDisplay />;
   if (!character) return <LoadingDisplay />;
 
   const characterAttributes = [

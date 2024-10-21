@@ -6,7 +6,7 @@ import { SearchBar } from './';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const Header = () => {
+const Header: React.FC = () => {
   const { handleResetFilters } = useCharactersContext();
 
   const location = useLocation();
@@ -23,8 +23,8 @@ const Header = () => {
     <AppBar
       component='header'
       position='fixed'
-      width='100%'
       sx={{
+        width: '100%',
         boxShadow: 'none',
         alignItems: 'center',
         p: '10px',

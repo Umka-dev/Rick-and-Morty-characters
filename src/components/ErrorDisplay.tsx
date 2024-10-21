@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const ErrorDisplay = () => {
+const ErrorDisplay: React.FC = () => {
   const { error } = useCharactersContext();
   return (
     <Box

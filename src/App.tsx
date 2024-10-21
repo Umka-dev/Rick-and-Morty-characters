@@ -9,7 +9,7 @@ import {
   NoPage,
 } from './pages';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <CharactersContextProvider>

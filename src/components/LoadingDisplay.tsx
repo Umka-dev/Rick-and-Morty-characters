@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
-const LoadingDisplay = () => {
+const LoadingDisplay: React.FC = () => {
   return (
     <Box
       maxWidth='xl'

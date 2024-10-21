@@ -8,11 +8,14 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Controller } from 'react-hook-form';
+import { CharacterFilterControl } from '../../types/types';
 
 import { FILTER_NAMES, GENDER_OPTIONS } from '../../constants';
 import { capitalFirst } from '../../utils';
 
-const GenderRadioButtons = ({ control }) => {
+const GenderRadioButtons: React.FC<{ control: CharacterFilterControl }> = ({
+  control,
+}) => {
   const { palette } = useTheme();
 
   return (

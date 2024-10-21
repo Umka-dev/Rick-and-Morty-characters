@@ -3,7 +3,17 @@ import { Dialog, DialogContent, DialogTitle, IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import CloseIcon from '@mui/icons-material/Close';
 
-const FilterModal = ({ isOpen, handleClose, children }) => {
+interface FilterModalProps {
+  isOpen: boolean;
+  handleClose: () => void;
+  children: React.ReactNode;
+}
+
+const FilterModal: React.FC<FilterModalProps> = ({
+  isOpen,
+  handleClose,
+  children,
+}) => {
   const { palette } = useTheme();
 
   return (
