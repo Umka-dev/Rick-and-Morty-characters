@@ -21,7 +21,7 @@ const ErrorDisplay: React.FC = () => {
         },
       }}
     >
-      <Typography variant='body1'>Error: {error.message}</Typography>
+      <Typography variant='body1'>Error: {error?.message}</Typography>
     </Box>
   );
 };

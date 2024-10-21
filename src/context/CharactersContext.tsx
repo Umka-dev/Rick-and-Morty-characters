@@ -22,15 +22,20 @@ const defaultContextValue: ICharacterContext = {
   error: null,
   totalCount: 0,
   hasNextPage: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleNextPage: () => {},
   isValidating: false,
   speciesList: [],
   selectedSpecies: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleChipClick: () => {},
   filteredCharacters: [],
   searchParams: new URLSearchParams(),
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleApplyFilters: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleResetFilters: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleSearchNavigate: () => {},
 };
 

@@ -2,6 +2,17 @@ import { Control } from 'react-hook-form';
 
 export type CharacterFilterControl = Control<ICharacterFilter>; //Control<FieldValues> from library react-hook-form
 
+export interface IData {
+  info?: {
+    count: number;
+    next: null | string;
+    pages: number;
+    prev: null | string;
+  };
+  results?: ICharacter[];
+  error?: Error;
+}
+
 interface ICharacterLocation {
   name: string;
   url: string;
@@ -42,7 +53,7 @@ export interface ICharacterFilter {
 
 export interface ICharacterContext {
   characters: ICharacter[];
-  error: any;
+  error?: Error | null;
   totalCount: number;
   hasNextPage: boolean;
   handleNextPage: () => void;

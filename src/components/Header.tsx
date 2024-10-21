@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const handleHomeClick = React.useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     handleResetFilters();
-  }, []);
+  }, [handleResetFilters]);
 
   const isSearchResultsPage = /^\/search/.test(location.pathname);
 

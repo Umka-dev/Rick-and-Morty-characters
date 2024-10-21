@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
-import { ICharacter } from '../types/types';
+import { ICharacter, IData } from '../types/types';
 
 import { fetcher } from '../utils';
 
@@ -9,17 +9,6 @@ import { ALL_SPECIES_NAME, CHARACTER_API_URL } from '../constants';
 /**
  * Custom hook to fetch characters
  */
-
-interface IData {
-  info?: {
-    count: number;
-    next: null | string;
-    pages: number;
-    prev: null | string;
-  };
-  results?: ICharacter[];
-  error?: Error;
-}
 
 const useCharactersApi = (searchParams: URLSearchParams) => {
   const [characters, setCharacters] = useState<ICharacter[]>([]);

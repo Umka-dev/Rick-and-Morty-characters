@@ -1,13 +1,13 @@
-import { ICharacter } from './types/types';
+import { ICharacterFilter } from './types/types';
 
-export const fetcher = (url: string): Promise<ICharacter[]> =>
+export const fetcher = <T>(url: string): Promise<T> =>
   fetch(url).then((res) => res.json());
 
 export const capitalFirst = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1);
 
 export const removeEmptyKeys = (
-  obj: Record<string, any>,
+  obj: ICharacterFilter,
 ): Record<string, string> => {
   return Object.entries(obj).reduce(
     (acc: Record<string, string>, [key, value]) => {

@@ -8,7 +8,11 @@ import {
 } from '@mui/material';
 import { ICharacter } from '../types/types';
 
-const Card: React.FC<ICharacter> = ({ id, name, image }) => {
+const Card: React.FC<Pick<ICharacter, 'id' | 'name' | 'image'>> = ({
+  id,
+  name,
+  image,
+}) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
