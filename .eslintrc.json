@@ -7,18 +7,15 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "prettier",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
-  "parser": "@typescript-eslint/parser",  
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2023,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
     }
   },
   "settings": {
@@ -32,7 +29,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "react/prop-types": 0,
+    "react/prop-types": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }
