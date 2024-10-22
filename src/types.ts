@@ -1,4 +1,5 @@
 import { Control } from 'react-hook-form';
+import { CHARACTER_STATUS, CHARACTER_GENDER } from './constants';
 
 export type CharacterFilterControl = Control<ICharacterFilter>; //Control<FieldValues> from library react-hook-form
 
@@ -26,10 +27,10 @@ interface IResourceBase {
 }
 
 export interface ICharacter extends IResourceBase {
-  status: 'Dead' | 'Alive' | 'unknown';
+  status: CHARACTER_STATUS;
   species: string;
   type: string;
-  gender: 'Female' | 'Male' | 'Genderless' | 'unknown';
+  gender: CHARACTER_GENDER;
   origin: ICharacterLocation;
   location: ICharacterLocation;
   image: string;
@@ -40,14 +41,8 @@ export interface ICharacterFilter {
   name?: string;
   type?: string;
   species?: string;
-  /**
-   * 'Dead' | 'Alive' | 'unknown'
-   */
-  status?: string;
-  /**
-   * 'Female' | 'Male' | 'Genderless' | 'unknown'
-   */
-  gender?: string;
+  status?: CHARACTER_STATUS;
+  gender?: CHARACTER_GENDER;
   page?: number;
 }
 

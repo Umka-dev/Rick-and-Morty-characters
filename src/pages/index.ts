@@ -1,7 +1,5 @@
-import Layout from './Layout';
-import HomePage from './HomePage';
-import SearchResults from './SearchResults';
-import CharacterDetails from './CharacterDetails';
-import NoPage from './NoPage';
-
-export { Layout, HomePage, SearchResults, CharacterDetails, NoPage };
+export { default as Layout } from './Layout';
+export { default as HomePage } from './HomePage';
+export { default as SearchResults } from './SearchResults';
+export { default as CharacterDetails } from './CharacterDetails';
+export { default as NoPage } from './NoPage';

@@ -6,7 +6,7 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
-import { ICharacter } from '../types/types';
+import { ICharacter } from '../types';
 
 const Card: React.FC<Pick<ICharacter, 'id' | 'name' | 'image'>> = ({
   id,
@@ -15,9 +15,9 @@ const Card: React.FC<Pick<ICharacter, 'id' | 'name' | 'image'>> = ({
 }) => {
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
+  const handleCardClick = React.useCallback(() => {
     navigate(`/character/${id}`);
-  };
+  }, [id, navigate]);
 
   return (
     <MuiCard

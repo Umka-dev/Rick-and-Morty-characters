@@ -6,10 +6,9 @@ import CloseIcon from '@mui/icons-material/Close';
 interface FilterModalProps {
   isOpen: boolean;
   handleClose: () => void;
-  children: React.ReactNode;
 }
 
-const FilterModal: React.FC<FilterModalProps> = ({
+const FilterModal: React.FC<React.PropsWithChildren<FilterModalProps>> = ({
   isOpen,
   handleClose,
   children,

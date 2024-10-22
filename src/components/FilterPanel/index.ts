@@ -1,15 +1,6 @@
-import FilterPanel from './FilterPanel';
-import FilterModal from './FilterModal';
-import FilterContent from './FilterContent';
-import FilterNameField from './FilterNameField';
-import GenderRadioButtons from './GenderRadioButtons';
-import StatusRadioButtons from './StatusRadioButtons';
-
-export {
-  FilterPanel,
-  FilterModal,
-  FilterContent,
-  FilterNameField,
-  GenderRadioButtons,
-  StatusRadioButtons,
-};
+export { default as FilterPanel } from './FilterPanel';
+export { default as FilterModal } from './FilterModal';
+export { default as FilterContent } from './FilterContent';
+export { default as FilterNameField } from './FilterNameField';
+export { default as GenderRadioButtons } from './GenderRadioButtons';
+export { default as StatusRadioButtons } from './StatusRadioButtons';

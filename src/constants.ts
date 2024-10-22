@@ -5,5 +5,19 @@ export enum FILTER_NAMES {
   status = 'status',
   gender = 'gender',
 }
-export const GENDER_OPTIONS = ['male', 'female', 'genderless', 'unknown'];
-export const STATUS_OPTIONS = ['alive', 'dead', 'unknown'];
+
+export enum CHARACTER_STATUS {
+  alive = 'alive',
+  dead = 'dead',
+  unknown = 'unknown',
+}
+
+export enum CHARACTER_GENDER {
+  male = 'male',
+  female = 'female',
+  genderless = 'genderless',
+  unknown = 'unknown',
+}
+
+export const STATUS_OPTIONS = Object.values(CHARACTER_STATUS);
+export const GENDER_OPTIONS = Object.values(CHARACTER_GENDER);

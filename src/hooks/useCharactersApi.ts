@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
-import { ICharacter, IData } from '../types/types';
+import { ICharacter, IData } from '../types';
 
 import { fetcher } from '../utils';
 
@@ -45,15 +45,13 @@ const useCharactersApi = (searchParams: URLSearchParams) => {
       return;
     }
 
-    const allCharacters = data
-      .flatMap((data: IData) => data.results)
-      .filter((character): character is ICharacter => character !== undefined); //Filtering ensures that the allCharacters array contains only elements of type Character.
+    const allCharacters = data.flatMap(({ results }: IData) => results || []);
     const count = data[0].info?.count ?? 0; //We use the "zero coalesce" operator (??) to set the default value to 0 if count is undefined.
-    const nextPage = data[data.length - 1].info?.next;
+    const nextPage = Boolean(data[data.length - 1].info?.next);
 
     setCharacters(allCharacters);
     setTotalCount(count);
-    setHasNextPage(Boolean(nextPage));
+    setHasNextPage(nextPage);
   }, [data]);
 
   useEffect(() => {
@@ -65,7 +63,7 @@ const useCharactersApi = (searchParams: URLSearchParams) => {
   }, [characters]);
 
   const handleNextPage = () => {
-    setSize((prevSize: number) => prevSize + 1);
+    setSize((prevSize) => prevSize + 1);
   };
 
   return {

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Stack, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { GenderRadioButtons, StatusRadioButtons, FilterNameField } from '.';
-import { ICharacterFilter } from '../../types/types';
+import { ICharacterFilter } from '../../types';
 
 import { useCharactersContext } from '../../context/CharactersContext';
 import { FILTER_NAMES } from '../../constants';
@@ -15,11 +15,13 @@ const FilterContent: React.FC = () => {
   const { palette } = useTheme();
 
   const { handleSubmit, reset, control } = useForm<ICharacterFilter>({
-    values: {
-      [FILTER_NAMES.name]: searchParams.get(FILTER_NAMES.name) || undefined,
-      [FILTER_NAMES.gender]: searchParams.get(FILTER_NAMES.gender) || undefined,
-      [FILTER_NAMES.status]: searchParams.get(FILTER_NAMES.status) || undefined,
-    },
+    values: Object.values(FILTER_NAMES).reduce(
+      (acc, name) => ({
+        ...acc,
+        [name]: searchParams.get(name) || undefined,
+      }),
+      {},
+    ),
   });
 
   const onSubmit = (data: ICharacterFilter) => {

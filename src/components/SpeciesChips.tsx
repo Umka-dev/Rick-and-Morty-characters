@@ -10,12 +10,15 @@ const SpeciesChips: React.FC = () => {
 
   const { palette } = useTheme();
 
-  const isSelected = (speciesName: string, idx: number) => {
-    if (idx === 0 && !selectedSpecies.length) {
-      return true;
-    }
-    return selectedSpecies.includes(speciesName);
-  };
+  const isSelected = React.useCallback(
+    (speciesName: string, idx: number) => {
+      if (idx === 0 && !selectedSpecies.length) {
+        return true;
+      }
+      return selectedSpecies.includes(speciesName);
+    },
+    [selectedSpecies],
+  );
 
   return (
     <Box

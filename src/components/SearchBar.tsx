@@ -3,7 +3,7 @@ import { TextField, Button, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useForm, Controller } from 'react-hook-form';
 import { FILTER_NAMES } from '../constants';
-import { ICharacterFilter } from '../types/types';
+import { ICharacterFilter } from '../types';
 
 import { useCharactersContext } from '../context/CharactersContext';
 

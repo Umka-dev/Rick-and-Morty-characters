@@ -1,15 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from 'react';
-import {
-  ICharacter,
-  ICharacterContext,
-  ICharacterFilter,
-} from '../types/types';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { ICharacter, ICharacterContext, ICharacterFilter } from '../types';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { ALL_SPECIES_NAME, FILTER_NAMES } from '../constants';
@@ -22,20 +12,15 @@ const defaultContextValue: ICharacterContext = {
   error: null,
   totalCount: 0,
   hasNextPage: false,
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleNextPage: () => {},
   isValidating: false,
   speciesList: [],
   selectedSpecies: [],
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleChipClick: () => {},
   filteredCharacters: [],
   searchParams: new URLSearchParams(),
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleApplyFilters: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleResetFilters: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   handleSearchNavigate: () => {},
 };
 
@@ -43,10 +28,8 @@ const defaultContextValue: ICharacterContext = {
 const CharactersContext = createContext<ICharacterContext>(defaultContextValue);
 
 // Create PROVIDER
-export const CharactersContextProvider = ({
+export const CharactersContextProvider: React.FC<React.PropsWithChildren> = ({
   children,
-}: {
-  children: ReactNode;
 }) => {
   // ---States for Search Bar
   const navigate = useNavigate();
