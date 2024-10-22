@@ -4,18 +4,21 @@ import { useTheme } from '@mui/material/styles';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const SpeciesChips = () => {
+const SpeciesChips: React.FC = () => {
   const { speciesList, selectedSpecies, handleChipClick } =
     useCharactersContext();
 
   const { palette } = useTheme();
 
-  const isSelected = (speciesName, idx) => {
-    if (idx === 0 && !selectedSpecies.length) {
-      return true;
-    }
-    return selectedSpecies.includes(speciesName);
-  };
+  const isSelected = React.useCallback(
+    (speciesName: string, idx: number) => {
+      if (idx === 0 && !selectedSpecies.length) {
+        return true;
+      }
+      return selectedSpecies.includes(speciesName);
+    },
+    [selectedSpecies],
+  );
 
   return (
     <Box

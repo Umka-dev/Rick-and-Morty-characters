@@ -4,7 +4,7 @@ import { FilterPanel } from '../components/FilterPanel';
 import CustomTypography from '../components/CustomTypography';
 import { Box } from '@mui/material';
 
-const SearchResults = () => {
+const SearchResults: React.FC = () => {
   return (
     <Box textAlign='center'>
       <FilterPanel />

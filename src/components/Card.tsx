@@ -1,19 +1,23 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import {
   CardMedia,
   Card as MuiCard,
   CardContent,
   Typography,
 } from '@mui/material';
+import { ICharacter } from '../types';
 
-const Card = ({ id, name, image }) => {
+const Card: React.FC<Pick<ICharacter, 'id' | 'name' | 'image'>> = ({
+  id,
+  name,
+  image,
+}) => {
   const navigate = useNavigate();
 
-  const handleCardClick = () => {
+  const handleCardClick = React.useCallback(() => {
     navigate(`/character/${id}`);
-  };
+  }, [id, navigate]);
 
   return (
     <MuiCard
@@ -32,12 +36,6 @@ const Card = ({ id, name, image }) => {
       </CardContent>
     </MuiCard>
   );
-};
-
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
 };
 
 export default Card;

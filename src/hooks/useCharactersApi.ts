@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useSWRInfinite from 'swr/infinite';
+import { ICharacter, IData } from '../types';
 
 import { fetcher } from '../utils';
 
@@ -9,16 +10,16 @@ import { ALL_SPECIES_NAME, CHARACTER_API_URL } from '../constants';
  * Custom hook to fetch characters
  */
 
-const useCharactersApi = (searchParams) => {
-  const [characters, setCharacters] = useState([]);
-  const [totalCount, setTotalCount] = useState(null);
-  const [hasNextPage, setHasNextPage] = useState('');
+const useCharactersApi = (searchParams: URLSearchParams) => {
+  const [characters, setCharacters] = useState<ICharacter[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
+  const [hasNextPage, setHasNextPage] = useState<boolean>(false);
 
-  const [speciesList, setSpeciesList] = useState([]);
+  const [speciesList, setSpeciesList] = useState<string[]>([]);
 
   const getKey = React.useCallback(
-    (_, prevCharacters) => {
-      if (prevCharacters) {
+    (_: number, prevCharacters: IData) => {
+      if (prevCharacters?.info) {
         return prevCharacters.info.next;
       }
 
@@ -31,23 +32,22 @@ const useCharactersApi = (searchParams) => {
     [searchParams],
   );
 
-  const { data, error, setSize, isValidating } = useSWRInfinite(
+  const { data, error, setSize, isValidating } = useSWRInfinite<IData, Error>(
     getKey,
     fetcher,
   );
 
   useEffect(() => {
-    if (!data) return;
-
+    if (!data?.[0]) return;
     if (data[0].error) {
       setCharacters([]);
       setHasNextPage(false);
       return;
     }
 
-    const allCharacters = data.flatMap((data) => data.results);
-    const count = data[0]?.info.count;
-    const nextPage = data[data.length - 1]?.info.next;
+    const allCharacters = data.flatMap(({ results }: IData) => results || []);
+    const count = data[0].info?.count ?? 0; //We use the "zero coalesce" operator (??) to set the default value to 0 if count is undefined.
+    const nextPage = Boolean(data[data.length - 1].info?.next);
 
     setCharacters(allCharacters);
     setTotalCount(count);

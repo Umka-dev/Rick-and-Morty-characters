@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import { FilterModal, FilterContent } from './';
 
-const FilterPanel = () => {
+const FilterPanel: React.FC = () => {
   const [isFilterDialogOpen, setIsFilterDialogOpen] = React.useState(false);
 
   const { palette, breakpoints } = useTheme();

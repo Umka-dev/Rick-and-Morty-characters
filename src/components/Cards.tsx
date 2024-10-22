@@ -4,7 +4,7 @@ import Card from './Card';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const Cards = () => {
+const Cards: React.FC = () => {
   const { filteredCharacters } = useCharactersContext();
 
   if (!filteredCharacters.length) {

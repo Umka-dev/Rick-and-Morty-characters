@@ -3,18 +3,20 @@ import { TextField, Button, Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useForm, Controller } from 'react-hook-form';
 import { FILTER_NAMES } from '../constants';
+import { ICharacterFilter } from '../types';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   const { handleSearchNavigate } = useCharactersContext();
 
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control } = useForm<ICharacterFilter>();
 
   const { palette } = useTheme();
 
-  const onSubmit = (data) => {
-    handleSearchNavigate(data[FILTER_NAMES.name]);
+  const onSubmit = (data: ICharacterFilter) => {
+    handleSearchNavigate(data[FILTER_NAMES.name] as string);
+    // console.log('data', data); //Example of data - name: "morty"
   };
 
   return (

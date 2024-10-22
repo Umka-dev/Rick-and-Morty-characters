@@ -5,19 +5,20 @@ import { Avatar, Box, List, ListItem, ListItemText } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { ErrorDisplay, LoadingDisplay } from '../components';
 import CustomTypography from '../components/CustomTypography';
+import { ICharacter } from '../types';
 
 import { fetcher } from '../utils';
 import { CHARACTER_API_URL } from '../constants';
 
-const CharacterDetails = () => {
+const CharacterDetails: React.FC = () => {
   const { id } = useParams();
-  const { data: character, error } = useSWR(
+  const { data: character, error } = useSWR<ICharacter>(
     `${CHARACTER_API_URL}${id}`,
     fetcher,
   );
   const { palette } = useTheme();
 
-  if (error) return <ErrorDisplay message={error.message} />;
+  if (error) return <ErrorDisplay />;
   if (!character) return <LoadingDisplay />;
 
   const characterAttributes = [

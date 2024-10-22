@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button, Box, Typography, CircularProgress } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { Cards, ErrorDisplay, LoadingDisplay } from './';
+import { Cards, ErrorDisplay, LoadingDisplay } from '.';
 
 import { useCharactersContext } from '../context/CharactersContext';
 
-const CardContainer = () => {
+const CardContainer: React.FC = () => {
   const {
     error,
     totalCount,

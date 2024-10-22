@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es2015", //Uses iteration over Set objects.
+    "lib": ["dom", "dom.iterable", "esnext"], // Includes DOM and ES features.
+    "allowJs": true, // Allows mixing JavaScript files in the project.
+    "skipLibCheck": true, // Skips type checking of declaration files.
+    "esModuleInterop": true, // Ensures compatibility with ES modules and CommonJS.
+    "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export.
+    "strict": true, // Enables strict type checking.
+    "forceConsistentCasingInFileNames": true, // Enforces consistent file name casing.
+    "module": "esnext", // Set the module system to ESNext.
+    "moduleResolution": "node", // Resolves modules in the same way Node.js does.
+    "resolveJsonModule": true, // Allows importing JSON files.
+    "isolatedModules": true, // Ensures that each file is treated as a separate module.
+    "noEmit": true, // Prevents TypeScript from generating any output files.
+    "jsx": "react-jsx" // Uses the new JSX transform (React 17+).
+  },
+  "include": ["src"], // Only include files from the 'src' directory.
+  "exclude": ["node_modules"] // Exclude 'node_modules' from being compiled.
+}

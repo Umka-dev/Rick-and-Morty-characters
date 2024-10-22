@@ -8,11 +8,14 @@ import {
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Controller } from 'react-hook-form';
+import { CharacterFilterControl } from '../../types';
 
 import { FILTER_NAMES, STATUS_OPTIONS } from '../../constants';
 import { capitalFirst } from '../../utils';
 
-const StatusRadioButtons = ({ control }) => {
+const StatusRadioButtons: React.FC<{ control: CharacterFilterControl }> = ({
+  control,
+}) => {
   const { palette } = useTheme();
 
   return (

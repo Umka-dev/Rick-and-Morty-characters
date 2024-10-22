@@ -1,22 +1,45 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { ICharacter, ICharacterContext, ICharacterFilter } from '../types';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { ALL_SPECIES_NAME, FILTER_NAMES } from '../constants';
 import { useCharactersApi } from '../hooks/useCharactersApi';
 import { removeEmptyKeys } from '../utils';
 
+// 1. Defining the initial state of the context
+const defaultContextValue: ICharacterContext = {
+  characters: [],
+  error: null,
+  totalCount: 0,
+  hasNextPage: false,
+  handleNextPage: () => {},
+  isValidating: false,
+  speciesList: [],
+  selectedSpecies: [],
+  handleChipClick: () => {},
+  filteredCharacters: [],
+  searchParams: new URLSearchParams(),
+  handleApplyFilters: () => {},
+  handleResetFilters: () => {},
+  handleSearchNavigate: () => {},
+};
+
 // Create CONTEXT
-const CharactersContext = createContext();
+const CharactersContext = createContext<ICharacterContext>(defaultContextValue);
 
 // Create PROVIDER
-export const CharactersContextProvider = ({ children }) => {
+export const CharactersContextProvider: React.FC<React.PropsWithChildren> = ({
+  children,
+}) => {
   // ---States for Search Bar
   const navigate = useNavigate();
   // States for Search Bar---
 
   // ---States for Species Chips
-  const [selectedSpecies, setSelectedSpecies] = useState([]);
-  const [filteredCharacters, setFilteredCharacters] = useState([]);
+  const [selectedSpecies, setSelectedSpecies] = useState<string[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<ICharacter[]>(
+    [],
+  );
   // States for Species Chips---
 
   // ---States for Filter Panel
@@ -44,7 +67,7 @@ export const CharactersContextProvider = ({ children }) => {
     }
   }, [characters, selectedSpecies]);
 
-  const handleChipClick = (species) => {
+  const handleChipClick = (species: ICharacter['species']) => {
     setSelectedSpecies((prevSelected) => {
       if (species === ALL_SPECIES_NAME) {
         return [];
@@ -64,7 +87,7 @@ export const CharactersContextProvider = ({ children }) => {
   // Get species list, filter characters and handlers for Species Chips---
 
   // ---Handlers for Search Bar
-  const handleSearchNavigate = (value) => {
+  const handleSearchNavigate = (value: string) => {
     let url = '/search/';
 
     if (value) {
@@ -76,7 +99,7 @@ export const CharactersContextProvider = ({ children }) => {
   };
 
   // Handlers for Filter Panel---
-  const handleApplyFilters = (filtersData) => {
+  const handleApplyFilters = (filtersData: ICharacterFilter) => {
     setSearchParams(new URLSearchParams(removeEmptyKeys(filtersData)));
   };
 

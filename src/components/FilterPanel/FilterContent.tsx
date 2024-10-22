@@ -2,26 +2,29 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Stack, Button } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { GenderRadioButtons, StatusRadioButtons, FilterNameField } from './';
+import { GenderRadioButtons, StatusRadioButtons, FilterNameField } from '.';
+import { ICharacterFilter } from '../../types';
 
 import { useCharactersContext } from '../../context/CharactersContext';
 import { FILTER_NAMES } from '../../constants';
 
-const FilterContent = () => {
+const FilterContent: React.FC = () => {
   const { handleResetFilters, handleApplyFilters, searchParams } =
     useCharactersContext();
 
   const { palette } = useTheme();
 
-  const { handleSubmit, reset, control } = useForm({
-    values: {
-      [FILTER_NAMES.name]: searchParams.get(FILTER_NAMES.name),
-      [FILTER_NAMES.gender]: searchParams.get(FILTER_NAMES.gender),
-      [FILTER_NAMES.status]: searchParams.get(FILTER_NAMES.status),
-    },
+  const { handleSubmit, reset, control } = useForm<ICharacterFilter>({
+    values: Object.values(FILTER_NAMES).reduce(
+      (acc, name) => ({
+        ...acc,
+        [name]: searchParams.get(name) || undefined,
+      }),
+      {},
+    ),
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: ICharacterFilter) => {
     handleApplyFilters(data);
   };
 

@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { SpeciesChips, CardContainer } from '../components';
 import CustomTypography from '../components/CustomTypography';
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <Box
       textAlign='center'
