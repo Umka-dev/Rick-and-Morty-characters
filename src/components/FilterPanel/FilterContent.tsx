@@ -18,7 +18,7 @@ const FilterContent: React.FC = () => {
     values: Object.values(FILTER_NAMES).reduce(
       (acc, name) => ({
         ...acc,
-        [name]: searchParams.get(name) || undefined,
+        [name]: searchParams.get(name) || '',
       }),
       {},
     ),
