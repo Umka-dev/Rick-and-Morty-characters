@@ -13,7 +13,8 @@
     "resolveJsonModule": true, // Allows importing JSON files.
     "isolatedModules": true, // Ensures that each file is treated as a separate module.
     "noEmit": true, // Prevents TypeScript from generating any output files.
-    "jsx": "react" // Uses the new JSX transform (React 17+).
+    "jsx": "react", // Uses the new JSX transform (React 17+).
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": ["src"], // Only include files from the 'src' directory.
   "exclude": ["node_modules"] // Exclude 'node_modules' from being compiled.

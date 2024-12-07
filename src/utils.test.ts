@@ -23,6 +23,10 @@ describe('utils', () => {
   describe('fetcher', () => {
     // Mock the global fetch function
     global.fetch = jest.fn();
+    beforeEach(() => {
+      jest.clearAllMocks();
+    });
+
     const url = 'https://api.example.com/data';
 
     test('should fetch data and return it as JSON', async () => {
