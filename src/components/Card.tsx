@@ -8,11 +8,9 @@ import {
 } from '@mui/material';
 import { ICharacter } from '../types';
 
-const Card: React.FC<Pick<ICharacter, 'id' | 'name' | 'image'>> = ({
-  id,
-  name,
-  image,
-}) => {
+export type IProps = Pick<ICharacter, 'id' | 'name' | 'image'>;
+
+const Card: React.FC<IProps> = ({ id, name, image }) => {
   const navigate = useNavigate();
 
   const handleCardClick = React.useCallback(() => {
