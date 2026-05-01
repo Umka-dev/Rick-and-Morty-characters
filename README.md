@@ -37,3 +37,5 @@ Or using Yarn:
 yarn start
 
 This will start the development server and open the application in your default web browser. The application will be accessible at http://localhost:3000.
+
+Project deployment: https://rick-and-morty-cartoon-characters.netlify.app/
